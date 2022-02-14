@@ -43,12 +43,18 @@
 } */
 
 body {
-  background: var(--clr-light);
-  color: var(--clr-dark);
   margin: 0;
   font-family: var(--ff-primary);
   font-size: var(--fs-body);
   line-height: 1.6;
+}
+.wapper.false {
+  background: var(--clr-light);
+  color: var(--clr-dark);
+}
+.wapper.true {
+  background: var(--clr-dark);
+  color: var(--clr-light);
 }
 
 section {
@@ -145,7 +151,7 @@ h3 {
   position: relative;
 }
 
-.section__title--img{
+.section__title--img {
   display: inline-block;
   max-width: 55px;
   max-height: 55px;
@@ -195,6 +201,7 @@ h3 {
   background-color: var(--clr-dark);
   background-image: url(../assets/skills__img@2x.png);
   background-size: cover;
+  background-position: center;
   /* background-blend-mode: multiply; */
   color: var(--clr-light);
   text-align: center;

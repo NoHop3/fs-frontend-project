@@ -1,7 +1,7 @@
 export type InitialNavState = {
-    class : boolean
-}
+  navClass: string;
+};
 
 export type InitialToggleState = {
-    theme : string
-}
+  lamp: boolean;
+};

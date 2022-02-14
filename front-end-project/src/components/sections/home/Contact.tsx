@@ -2,10 +2,10 @@ import React from "react";
 
 export default function Contact() {
   const handleForm = () => {
-
-  }
+    //TODO
+  };
   return (
-    <div className='contact-box'>
+    <div className='contact-box' id='contact'>
       <h2>Contact me!</h2>
       <form>
         <div className='form-box'>

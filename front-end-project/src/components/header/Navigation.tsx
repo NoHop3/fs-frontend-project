@@ -1,26 +1,31 @@
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
+import { toggleNav, toggleTheme } from "../../redux/actions";
+import { RootState } from "../../typescript/redux/store";
+import moon from "../../assets/icons8-fog.gif";
+import sun from "../../assets/icons8-sun.gif";
+
 export default function Navigation() {
-  const [navBarOpen, setNavbarOpen] = useState(false);
-  const [themeSwitcher, setThemeSwitcher] = useState(false);
-  const toggleNav = () => {
-    setNavbarOpen(!navBarOpen);
-  };
-  const toggleTheme = () => {
-    setThemeSwitcher(!themeSwitcher);
-  };
-  // TODO Redux stuff
+  const dispatch = useDispatch();
+  const { lamp } = useSelector((state: RootState) => state.themeState);
   return (
     <>
       <button
-        onClick={toggleNav}
+        onClick={() => dispatch(toggleNav())}
         className={"nav-toggle"}
         aria-label='toggle navigation'>
         <span className='hamburger'></span>
       </button>
+      <button className={"themeIcon"} onClick={() => dispatch(toggleTheme())}>
+        <img
+          className={"themeImage"}
+          src={lamp ? moon : sun}
+          alt='Theme icon'
+        />
+      </button>
       <nav className='nav'>
-        <ul className='nav__list'>
+        <ul onClick={() => dispatch(toggleNav())} className='nav__list'>
           <li className='nav__item'>
             <a href='#home' className='nav__link'>
               Home
@@ -45,13 +50,6 @@ export default function Navigation() {
             <Link to={"/playground"} className='nav__link'>
               Playground
             </Link>
-          </li>
-          <li>
-            <i
-              onClick={toggleTheme}
-              className={
-                themeSwitcher ? "fa-solid fa-moon" : "fa-solid fa-sun"
-              }></i>
           </li>
         </ul>
       </nav>

@@ -10,6 +10,23 @@ header {
   max-width: 100px;
 }
 
+.themeIcon {
+  position: fixed;
+  background-color: transparent;
+  right: 1em;
+  top: 3em;
+  outline: none;
+  border: 0;
+  cursor: pointer;
+  
+}
+.themeImage {
+  max-width: 2.5rem;
+  max-height: 2.5rem;
+}
+
+
+
 .nav {
   position: fixed;
   background: var(--clr-dark);
@@ -52,12 +69,11 @@ header {
   background: transparent;
   border: 0;
   cursor: pointer;
-  position: absolute;
+  position: fixed;
   right: 1em;
   top: 1em;
   z-index: 1000;
 }
-
 
 .nav-open .nav {
   transform: translateX(0);

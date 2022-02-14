@@ -3,7 +3,7 @@ import wave from "../../../assets/Wave.gif";
 
 export default function Intro() {
   return (
-    <section className='intro' id='home'>
+    <section className='intro'>
       <h1 className='section__title section__title--intro'>
         Hi
         <span>
