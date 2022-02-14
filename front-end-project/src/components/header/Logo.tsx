@@ -1,4 +1,4 @@
-import logo__png from '../../assets/stgdev__logo.png'
+import logo__png from "../../assets/stgdev__logo.png";
 
 export default function Logo() {
   return (

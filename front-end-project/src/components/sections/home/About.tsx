@@ -3,13 +3,13 @@ import portraitImage from "../../../assets/stefan__georgiev2.png";
 export default function About() {
   return (
     <section className='about-me' id='about'>
-      <h2 className='section__title section__title--about'>Who I am</h2>
+      <h2 className='section__title section__title--about'>More about me</h2>
       <p className='section__subtitle section__subtitle--about'>
         Student at VIA University College
       </p>
       <div className='about-me__body'>
         <p>
-          I am 21 years old (currently) and I love working out, listening to
+          I am 21 years old and I love working out, listening to
           music, eating healthy and everything else that makes me laugh.
         </p>
         <p>
@@ -25,7 +25,7 @@ export default function About() {
           good.
         </p>
       </div>
-      <img src={portraitImage} alt='Portrait of Stefan Georgiev' />
+      <img src={portraitImage} alt='Portrait of Stefan Georgiev' className="about-me__img" />
     </section>
   );
 }

@@ -5,7 +5,7 @@ export default function Skills() {
         What I do apart from web development?
       </h2>
       <div className='skills'>
-        <div className='skills'>
+        <div className='skill'>
           <h3>Java</h3>
           <p>
             As a part of my university curriculum I had undergone 1 year of
@@ -15,18 +15,18 @@ export default function Skills() {
             Library called JavaFX.
           </p>
         </div>
-        <div className='skills'>
+        <div className='skill'>
           <h3>C#</h3>
           <p>
             Similarly to Java I studied C# in university as well as during the
-            last year of high school. I have broad knownledge in ASP.NET Core
+            last year of high school. I have a broad knownledge in ASP.NET Core
             which includes working with Blazor and ASP.NET Web REST APIs.
             Particular project I have worked on in this area is a shared
             calendar created for the user to be organized and also be touch with
             friends or family.
           </p>
         </div>
-        <div className='skills'>
+        <div className='skill'>
           <h3>C++</h3>
           <p>
             My first ever program and first ever encounter with coding and
@@ -38,6 +38,11 @@ export default function Skills() {
           </p>
         </div>
       </div>
+      <button style={{width:'fit-content', blockSize: "fit-content", backgroundColor:'transparent', padding:'0', border: 'none'}}>
+        <a href='https://github.com/NoHop3?tab=repositories' className='btn'>
+          My Work
+        </a>
+      </button>
     </section>
   );
 }

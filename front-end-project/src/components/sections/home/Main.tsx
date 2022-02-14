@@ -7,8 +7,8 @@ export default function Main() {
   return (
     <main>
         <Intro/>
-        <About/>
         <Skills/>
+        <About/>
         <Contact/>
     </main>
   )
