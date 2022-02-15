@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { toggleNav, toggleTheme } from "../../redux/actions";
+import { toggleNav, toggleTheme } from "../../redux/actions/actions";
 import { RootState } from "../../typescript/redux/store";
 import moon from "../../assets/icons8-fog.gif";
 import sun from "../../assets/icons8-sun.gif";
