@@ -1,10 +1,21 @@
 export type card = {
-  cardId: string;
-  dbfId: string;
+  artist: string;
+  attack?: number;
+  cardClass: string;
+  collectible: boolean;
+  cost: number;
+  dbfId: number;
+  flavor: string;
+  health: string;
+  id: string;
   name: string;
+  race: string;
+  rarity: string;
+  set: string;
+  spellschool: string;
   cardSet: string;
-  type: string;
   text: string;
-  playerClass: string;
-  locale: string;
+  type: string;
+  mechanics?: [];
+  referencedTags?: [];
 };

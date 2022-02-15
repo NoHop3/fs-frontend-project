@@ -1,0 +1,82 @@
+.filterByMana {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.crystal__list {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: 6.8rem 6.8rem 6.8rem;
+}
+
+.crystal__image {
+  max-width: 3rem;
+  max-height: 3rem;
+}
+
+.filterCostBtn {
+  background: transparent;
+  border: 0;
+  transition: transform 200ms ease-in-out;
+}
+
+.filterCostBtn:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+@media (min-width: 800px) {
+  .crystal__list {
+    margin-top: -7rem;
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
+
+  .crystal__image {
+    max-width: 4rem;
+    max-height: 4rem;
+  }
+
+  .filterCostBtn {
+    background: transparent;
+    border: 0;
+    transition: transform 200ms ease-in-out;
+  }
+
+  .filterCostBtn:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+}
+
+@media (min-width: 1200px) {
+  .crystal__list {
+    margin-top: -7rem;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .crystal__list--item + .crystal__list--item {
+    margin-left: 1.25rem;
+  }
+
+  .crystal__image {
+    max-width: 4rem;
+    max-height: 4rem;
+  }
+
+  .filterCostBtn {
+    background: transparent;
+    border: 0;
+    transition: transform 200ms ease-in-out;
+  }
+
+  .filterCostBtn:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+}

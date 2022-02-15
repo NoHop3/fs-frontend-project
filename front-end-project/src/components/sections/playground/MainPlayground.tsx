@@ -1,14 +1,15 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchFunc } from "../../../redux/actions/actions";
-import { RootState } from "../../../typescript/redux/store";
+import Collection from "./Collection";
+import FilterCards from "./FilterCards";
+import "../../../styles/Playground.css";
+import "../../../styles/FilterCost.css";
+import FilterCost from "./FilterCost";
 
 export default function MainPlayground() {
-  const dispatch = useDispatch();
-  const { ...data } = useSelector((state: RootState) => state.dataState);
-  useEffect(() => {
-    dispatch(fetchFunc());
-  }, [dispatch]);
-  console.log(data);
-  return <div>MainPlayground</div>;
+  return (
+    <main>
+      <FilterCards />
+      <Collection />
+      <FilterCost/>
+    </main>
+  );
 }

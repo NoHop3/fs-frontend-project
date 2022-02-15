@@ -1,3 +1,9 @@
 export const TOGGLE_THEME = "TOGGLE_THEME";
 export const TOGGLE_NAV = "TOGGLE_NAV";
 export const FETCH_ALL_DATA = "FETCH_ALL_DATA";
+export const GO_TO_NEXT_PAGE = "GO_TO_NEXT_PAGE";
+export const GO_TO_PREV_PAGE = "GO_TO_PREV_PAGE";
+export const FILTER_BY_MANA = "FILTER_BY_MANA";
+export const FILTER_BY_CLASS = "FILTER_BY_CLASS";
+export const FILTER_BY_SEARCH  = "FILTER_BY_SEARCH";
+export const SET_DEFAULT_CARDS = "SET_DEFAULT_PAGE";
