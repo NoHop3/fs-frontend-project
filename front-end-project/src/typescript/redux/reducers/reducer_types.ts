@@ -19,10 +19,6 @@ export type InitialDataState = {
   dataFetched: boolean;
 };
 
-export type InitialFilterState = {
-  mana: number;
-  class: string;
-  keyword: string;
-};
+export type InitialCardState = card;
 
 //TODO InitialPageState or something to fix the problem with playground links to ABOUT, SKILLS, etc

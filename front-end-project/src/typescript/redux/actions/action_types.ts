@@ -1,13 +1,14 @@
+import { card } from "../../types";
 import {
   FETCH_ALL_DATA,
   TOGGLE_NAV,
   TOGGLE_THEME,
   GO_TO_NEXT_PAGE,
   GO_TO_PREV_PAGE,
-  FILTER_BY_CLASS,
   FILTER_BY_MANA,
   FILTER_BY_SEARCH,
   SET_DEFAULT_CARDS,
+  SET_SELECTED_CARD,
 } from "./action_const";
 
 export type toggleThemeAction = {
@@ -36,11 +37,6 @@ export type FilterByManaAction = {
   payload: number;
 };
 
-export type FilterByClassAction = {
-  type: typeof FILTER_BY_CLASS;
-  payload: string;
-};
-
 export type FilterBySearchAction = {
   type: typeof FILTER_BY_SEARCH;
   payload: string;
@@ -51,6 +47,11 @@ export type SetDefaultCardsAction = {
   payload: number;
 };
 
+export type SetSelectedCardAction = {
+  type: typeof SET_SELECTED_CARD;
+  payload: card;
+};
+
 export type actionType =
   | toggleNavAction
   | toggleThemeAction
@@ -59,5 +60,5 @@ export type actionType =
   | GoToPrevPageAction
   | FilterByManaAction
   | FilterBySearchAction
-  | FilterByClassAction
+  | SetSelectedCardAction
   | SetDefaultCardsAction;

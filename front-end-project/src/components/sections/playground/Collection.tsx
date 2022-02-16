@@ -1,8 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
-import { GoToNextPage, GoToPrevPage } from "../../../redux/actions/actions";
+import {
+  GoToNextPage,
+  GoToPrevPage,
+  setSelectedCard,
+} from "../../../redux/actions/actions";
 import { InitialDataState } from "../../../typescript/redux/reducers/reducer_types";
 import { RootState } from "../../../typescript/redux/store";
+import { card } from "../../../typescript/types";
 import FilterCost from "./FilterCost";
 // import SingleCard from "./SingleCard";
 
@@ -11,6 +17,9 @@ export default function Collection() {
     (state: RootState) => state.dataState
   );
   const dispatch = useDispatch();
+  const handleClick = (card: card) => {
+    dispatch(setSelectedCard(card));
+  };
   return (
     <section className='collection'>
       <button
@@ -25,16 +34,14 @@ export default function Collection() {
       <ul className='collection__list'>
         {data.cardsToDisplay.map((card) => (
           <li className='collection__list--item' key={card.id}>
-            <button
-              className='cardBtn'
-              onClick={() => {
-                // <SingleCard singleCard={card}/>
-              }}>
-              <img
-                src={`https://art.hearthstonejson.com/v1/render/latest/enUS/256x/${card.id}.png`}
-                alt='Hearthstone card'
-              />
-            </button>
+            <Link to={`/details?${card.id}`}>
+              <button className='cardBtn' onClick={() => handleClick(card)}>
+                <img
+                  src={`https://art.hearthstonejson.com/v1/render/latest/enUS/256x/${card.id}.png`}
+                  alt='Hearthstone card'
+                />
+              </button>
+            </Link>
           </li>
         ))}
       </ul>

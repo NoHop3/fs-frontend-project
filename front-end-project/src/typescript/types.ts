@@ -6,7 +6,7 @@ export type card = {
   cost: number;
   dbfId: number;
   flavor: string;
-  health: string;
+  health?: number;
   id: string;
   name: string;
   race: string;

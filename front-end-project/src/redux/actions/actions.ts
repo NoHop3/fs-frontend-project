@@ -2,12 +2,12 @@ import { Dispatch } from "redux";
 
 import {
   FETCH_ALL_DATA,
-  FILTER_BY_CLASS,
   FILTER_BY_MANA,
   FILTER_BY_SEARCH,
   GO_TO_NEXT_PAGE,
   GO_TO_PREV_PAGE,
   SET_DEFAULT_CARDS,
+  SET_SELECTED_CARD,
   TOGGLE_NAV,
   TOGGLE_THEME,
 } from "../../typescript/redux/actions/action_const";
@@ -16,6 +16,7 @@ import {
   GoToNextPageAction,
   GoToPrevPageAction,
   SetDefaultCardsAction,
+  SetSelectedCardAction,
   toggleNavAction,
   toggleThemeAction,
 } from "../../typescript/redux/actions/action_types";
@@ -47,6 +48,12 @@ export function setDefaultCards(numberOfCards: number): SetDefaultCardsAction {
     payload: numberOfCards,
   };
 }
+export function setSelectedCard(selectedCard: card): SetSelectedCardAction {
+  return {
+    type: SET_SELECTED_CARD,
+    payload: selectedCard,
+  };
+}
 
 export function GoToNextPage(): GoToNextPageAction {
   return {
@@ -63,13 +70,6 @@ export function FilterByMana(mana: number) {
   return {
     type: FILTER_BY_MANA,
     payload: mana,
-  };
-}
-
-export function FilterByClass(hero: string) {
-  return {
-    type: FILTER_BY_CLASS,
-    payload: hero,
   };
 }
 
