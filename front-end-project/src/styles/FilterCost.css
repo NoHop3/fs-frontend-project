@@ -1,12 +1,11 @@
 .filterByMana {
   max-width: 1000px;
   margin: 0 auto;
-}
-
-.crystal__list {
-  list-style-type: none;
   display: grid;
-  grid-template-columns: 6.8rem 6.8rem 6.8rem;
+  grid-template-columns: 7rem 7rem 7rem;
+  margin-bottom: 2rem;
+  padding-left: 1.5rem;
+  margin-top: 12rem;
 }
 
 .crystal__image {
@@ -14,69 +13,58 @@
   max-height: 3rem;
 }
 
-.filterCostBtn {
+.manaBtn {
+  display: block;
   background: transparent;
+  outline: none;
   border: 0;
+  cursor: pointer;
   transition: transform 200ms ease-in-out;
 }
 
-.filterCostBtn:hover {
+.manaBtn:hover {
   transform: scale(1.1);
-  cursor: pointer;
+}
+
+@media (min-width: 600px) {
+  .filterByMana {
+    grid-template-columns: 11rem 11rem 11rem;
+    margin-top: 4rem;
+  }
+  grid-item {
+    display: flex;
+  }
+  .manaBtn {
+    margin: auto;
+  }
+
+  .crystal__image {
+    max-width: 5rem;
+    max-height: 5rem;
+  }
 }
 
 @media (min-width: 800px) {
-  .crystal__list {
-    margin-top: -7rem;
-    list-style: none;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  .filterByMana {
+    grid-template-columns: 11rem 11rem 11rem 11rem;
+    margin-top: 6rem;
   }
 
   .crystal__image {
     max-width: 4rem;
     max-height: 4rem;
   }
-
-  .filterCostBtn {
-    background: transparent;
-    border: 0;
-    transition: transform 200ms ease-in-out;
-  }
-
-  .filterCostBtn:hover {
-    transform: scale(1.1);
-    cursor: pointer;
-  }
 }
 
 @media (min-width: 1200px) {
-  .crystal__list {
-    margin-top: -7rem;
-    list-style: none;
+  .filterByMana {
+    margin-top: 6rem;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
   }
-
-  .crystal__list--item + .crystal__list--item {
-    margin-left: 1.25rem;
-  }
-
-  .crystal__image {
-    max-width: 4rem;
-    max-height: 4rem;
-  }
-
-  .filterCostBtn {
-    background: transparent;
-    border: 0;
-    transition: transform 200ms ease-in-out;
-  }
-
-  .filterCostBtn:hover {
-    transform: scale(1.1);
-    cursor: pointer;
+  .manaBtn + .manaBtn {
+    margin-left: 1.75rem;
   }
 }

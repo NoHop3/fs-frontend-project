@@ -87,6 +87,7 @@ export function fetchFunc() {
     )
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         dispatch(fetchAllData(data));
       })
       .catch((err: string) => {

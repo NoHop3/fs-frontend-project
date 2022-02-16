@@ -10,10 +10,13 @@ export type InitialToggleState = {
 
 export type InitialDataState = {
   cards: card[];
+  filteredCards: card[];
   cardsViewed: number;
-  pageNumber:number;
+  pageNumber: number;
   cardsPerPage: number;
   cardsToDisplay: card[];
+  filterByMana: card[];
+  dataFetched: boolean;
 };
 
 export type InitialFilterState = {
