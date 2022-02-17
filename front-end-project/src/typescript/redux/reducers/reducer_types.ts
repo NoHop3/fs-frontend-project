@@ -2,6 +2,7 @@ import { card } from "../../types";
 
 export type InitialNavState = {
   navClass: string;
+  page: string;
 };
 
 export type InitialToggleState = {

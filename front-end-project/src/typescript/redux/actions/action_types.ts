@@ -19,6 +19,7 @@ import {
   GET_CARD_BY_ID,
   IS_CARD_IN_FAVS,
   IS_CARD_IN_DECK,
+  SET_PAGE,
 } from "./action_const";
 
 export type toggleThemeAction = {
@@ -102,6 +103,10 @@ export type GetCardByIdAction = {
   type: typeof GET_CARD_BY_ID;
   payload: string;
 };
+export type SetPageAction = {
+  type: typeof SET_PAGE;
+  payload: string;
+};
 
 export type actionType =
   | toggleNavAction
@@ -122,4 +127,5 @@ export type actionType =
   | GetFavsAction
   | GetCardByIdAction
   | IsCardInFavsAction
-  | IsCardInDeckAction;
+  | IsCardInDeckAction
+  | SetPageAction;

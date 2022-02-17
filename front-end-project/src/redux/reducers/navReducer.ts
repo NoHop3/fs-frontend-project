@@ -4,11 +4,10 @@ import { TOGGLE_NAV } from "../../typescript/redux/actions/action_const";
 
 const initialState: InitialNavState = {
   navClass: "wapper",
+  page: JSON.parse(localStorage.getItem("page")!),
 };
 
 const navReducer = (state = initialState, action: actionType) => {
-  //TODO fix the rendering
-  console.log(state);
   switch (action.type) {
     case TOGGLE_NAV:
       return {

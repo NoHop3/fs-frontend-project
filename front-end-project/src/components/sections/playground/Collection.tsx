@@ -10,7 +10,7 @@ import { InitialDataState } from "../../../typescript/redux/reducers/reducer_typ
 import { RootState } from "../../../typescript/redux/store";
 import { evtClickType } from "../../../typescript/types";
 import CardButtons from "./CardButtons";
-import Filter from "./FilterCards";
+import FilterSearch from "./FilterCards";
 import FilterCost from "./FilterCost";
 
 export default function Collection() {
@@ -35,7 +35,7 @@ export default function Collection() {
   };
   return (
     <section>
-      <Filter />
+      <FilterSearch />
       <div className='collection'>
         <button
           className='prvBtn'

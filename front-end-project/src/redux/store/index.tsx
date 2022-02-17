@@ -31,9 +31,11 @@ const store = () => {
     const { lamp } = reduxStore.getState().themeState;
     const favData: InitialDataState = reduxStore.getState().dataState;
     const { deck } = reduxStore.getState().deckState;
+    const { page } = reduxStore.getState().navState;
     localStorage.setItem("lamp", JSON.stringify(lamp));
     localStorage.setItem("favs", JSON.stringify(favData.favouritedCards));
     localStorage.setItem("deck", JSON.stringify(deck));
+    localStorage.setItem("page", JSON.stringify(page));
     // saveToLocalStorage(reduxStore.getState().themeState);
   };
   return reduxStore;

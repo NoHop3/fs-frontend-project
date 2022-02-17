@@ -1,38 +1,47 @@
-import "../../../styles/Form.css";
+import { memo, useCallback, useState } from "react";
 import * as emailjs from "emailjs-com";
-import { useState } from "react";
+
+import "../../../styles/Form.css";
 import { evtChangeType } from "../../../typescript/types";
 
-export default function Contact() {
+function Contact() {
   const [toSend, setToSend] = useState({
     from_name: "",
     from_email: "",
     message: "",
   });
-  const onSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
-    e.preventDefault();
-    emailjs
-      .send(
-        "default_service",
-        "template_8k967km",
-        toSend,
-        "user_TxcZ8p3cECUFbyuSNc57n"
-      )
-      .then((response) => {
-        console.log("SUCCESS!", response.status, response.text);
-      })
-      .catch((err) => {
-        console.log("FAILED...", err);
-      });
-  };
-  const handleChange = (e: evtChangeType) => {
-    setToSend({ ...toSend, [e.target.name]: e.target.value });
-  };
-  const handleMessChange: React.ChangeEventHandler<HTMLTextAreaElement> = (
-    e
-  ) => {
-    setToSend({ ...toSend, [e.target.name]: e.target.value });
-  };
+  const onSubmit: React.FormEventHandler<HTMLFormElement> = useCallback(
+    (e) => {
+      e.preventDefault();
+      emailjs
+        .send(
+          "default_service",
+          "template_8k967km",
+          toSend,
+          "user_TxcZ8p3cECUFbyuSNc57n"
+        )
+        .then((response) => {
+          console.log("SUCCESS!", response.status, response.text);
+        })
+        .catch((err) => {
+          console.log("FAILED...", err);
+        });
+    },
+    [toSend]
+  );
+  const handleChange = useCallback(
+    (e: evtChangeType) => {
+      setToSend({ ...toSend, [e.target.name]: e.target.value });
+    },
+    [toSend]
+  );
+  const handleMessChange: React.ChangeEventHandler<HTMLTextAreaElement> =
+    useCallback(
+      (e) => {
+        setToSend({ ...toSend, [e.target.name]: e.target.value });
+      },
+      [toSend]
+    );
   return (
     <div className='contact-box' id='contact'>
       <h2>Contact me!</h2>
@@ -80,3 +89,4 @@ export default function Contact() {
     </div>
   );
 }
+export default memo(Contact);

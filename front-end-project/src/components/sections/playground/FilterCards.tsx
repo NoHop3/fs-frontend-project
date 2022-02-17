@@ -1,12 +1,22 @@
+import { memo, useCallback } from "react";
+
 import useTemplate from "../../../hooks/useImports";
 import { FilterBySearch, GetFavsArray } from "../../../redux/actions/actions";
 import { evtChangeType } from "../../../typescript/types";
 
-export default function Filter() {
+function Filter() {
+  //!!!Not fully optimized
   const { dispatch, deckData, data } = useTemplate();
-  const handleChangeLetter = (evt: evtChangeType) => {
-    dispatch(FilterBySearch(evt.target.value));
-  };
+  const handleClick = useCallback(() => {
+    dispatch(GetFavsArray());
+  }, [dispatch]);
+  const handleChangeLetter = useCallback(
+    (evt: evtChangeType) => {
+      dispatch(FilterBySearch(evt.target.value));
+    },
+    [dispatch]
+  );
+  console.log("FILTER SEARCG IS RENDERING");
   return (
     <div className='filter_cards'>
       <div className='searchBar'>
@@ -19,14 +29,14 @@ export default function Filter() {
         <label htmlFor='search'>Search</label>
       </div>
       <div className='favourites'>
-        <button className='submitBtn' onClick={() => dispatch(GetFavsArray())}>
+        <button className='submitBtn' onClick={handleClick}>
           <span></span>
           <span></span>
           <span></span>
           <span></span>
           Favs({`${data.favouritedCards.length}`})
         </button>
-        <button className='submitBtn' onClick={() => console.log(deckData)}>
+        <button className='submitBtn'>
           <span></span>
           <span></span>
           <span></span>
@@ -37,3 +47,5 @@ export default function Filter() {
     </div>
   );
 }
+
+export default memo(Filter);
