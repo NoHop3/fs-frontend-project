@@ -7,7 +7,7 @@ import { InitialDeckState } from "../../typescript/redux/reducers/reducer_types"
 import { card } from "../../typescript/types";
 
 const initialState: InitialDeckState = {
-  deck: [],
+  deck: JSON.parse(localStorage.getItem("deck")!),
 };
 
 const deckReducer = (state = initialState, action: actionType) => {

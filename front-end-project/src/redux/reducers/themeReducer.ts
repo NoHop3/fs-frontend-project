@@ -3,7 +3,7 @@ import { actionType } from "../../typescript/redux/actions/action_types";
 import { TOGGLE_THEME } from "../../typescript/redux/actions/action_const";
 
 const initialState: InitialToggleState = {
-  lamp: false,
+  lamp: JSON.parse(localStorage.getItem("lamp")!),
 };
 
 const themeReducer = (state = initialState, action: actionType) => {
