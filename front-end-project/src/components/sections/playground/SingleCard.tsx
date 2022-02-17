@@ -1,12 +1,12 @@
 import Footer from "../../footer/Footer";
 import Header from "../../header/Header";
-import importTemplate from "../../../hooks/useImports";
+import useTemplate from "../../../hooks/useImports";
 import "../../../styles/SingleCard.css";
+import { memo } from "react";
 
-export default function SingleCard() {
+function SingleCard() {
   const { pageBody, isMobile, isTablet, data, handleClick, deckData } =
-    importTemplate();
-
+    useTemplate();
   return (
     <div className={pageBody}>
       <Header />
@@ -56,3 +56,4 @@ export default function SingleCard() {
     </div>
   );
 }
+export default memo(SingleCard);

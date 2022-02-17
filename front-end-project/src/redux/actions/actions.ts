@@ -20,6 +20,7 @@ import {
   GET_CARD_BY_ID,
   IS_CARD_IN_FAVS,
   IS_CARD_IN_DECK,
+  SET_PAGE,
 } from "../../typescript/redux/actions/action_const";
 import {
   AddCardToDeckAction,
@@ -41,6 +42,7 @@ import {
   GetCardByIdAction,
   IsCardInFavsAction,
   IsCardInDeckAction,
+  SetPageAction,
 } from "../../typescript/redux/actions/action_types";
 import { card } from "../../typescript/types";
 
@@ -159,6 +161,12 @@ export function IsCardInDeck(id: string): IsCardInDeckAction {
   return {
     type: IS_CARD_IN_DECK,
     payload: id,
+  };
+}
+export function SetPage(pageName: string): SetPageAction {
+  return {
+    type: SET_PAGE,
+    payload: pageName,
   };
 }
 
