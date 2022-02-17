@@ -3,7 +3,7 @@ import { FilterBySearch, GetFavsArray } from "../../../redux/actions/actions";
 import { evtChangeType } from "../../../typescript/types";
 
 export default function Filter() {
-  const { dispatch, favouritedCards, deck } = useTemplate();
+  const { dispatch, deckData, data } = useTemplate();
   const handleChangeLetter = (evt: evtChangeType) => {
     dispatch(FilterBySearch(evt.target.value));
   };
@@ -24,14 +24,14 @@ export default function Filter() {
           <span></span>
           <span></span>
           <span></span>
-          Favs({`${favouritedCards.length}`})
+          Favs({`${data.favouritedCards.length}`})
         </button>
-        <button className='submitBtn'>
+        <button className='submitBtn' onClick={() => console.log(deckData)}>
           <span></span>
           <span></span>
           <span></span>
           <span></span>
-          Deck({`${deck.length}`})
+          Deck({`${deckData.deck.length}`})
         </button>
       </div>
     </div>

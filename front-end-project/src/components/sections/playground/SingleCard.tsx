@@ -1,24 +1,11 @@
-import { InitialCardState } from "../../../typescript/redux/reducers/reducer_types";
-import { RootState } from "../../../typescript/redux/store";
 import Footer from "../../footer/Footer";
 import Header from "../../header/Header";
 import importTemplate from "../../../hooks/useImports";
-import { card } from "../../../typescript/types";
 import "../../../styles/SingleCard.css";
 
 export default function SingleCard() {
-  const {
-    useSelector,
-    pageBody,
-    isMobile,
-    isTablet,
-    deck,
-    favouritedCards,
-    handleClick,
-  } = importTemplate();
-  const card: InitialCardState = useSelector(
-    (state: RootState) => state.cardState
-  );
+  const { pageBody, isMobile, isTablet, data, handleClick, deckData } =
+    importTemplate();
 
   return (
     <div className={pageBody}>
@@ -29,14 +16,14 @@ export default function SingleCard() {
             <img
               src={
                 isMobile || isTablet
-                  ? `https://art.hearthstonejson.com/v1/render/latest/enUS/256x/${card.id}.png`
-                  : `https://art.hearthstonejson.com/v1/render/latest/enUS/512x/${card.id}.png`
+                  ? `https://art.hearthstonejson.com/v1/render/latest/enUS/256x/${data.selectedCard.id}.png`
+                  : `https://art.hearthstonejson.com/v1/render/latest/enUS/512x/${data.selectedCard.id}.png`
               }
               alt='Splash art of selected card'
             />
           </div>
           <div className='grid_container'>
-            {deck.find((cardToFind: card) => cardToFind === card) ===
+            {deckData.deck.find((card) => card === data.selectedCard) ===
             undefined ? (
               <button className='btn addToDeckBtn' onClick={handleClick}>
                 Add to deck
@@ -46,7 +33,7 @@ export default function SingleCard() {
                 Remove from deck
               </button>
             )}
-            {favouritedCards.find((cardToFind: card) => cardToFind === card) ===
+            {data.favouritedCards.find((card) => card === data.selectedCard) ===
             undefined ? (
               <button className='btn addToFavsBtn' onClick={handleClick}>
                 Add to favs
@@ -56,8 +43,12 @@ export default function SingleCard() {
                 Remove from favs
               </button>
             )}
-            <button className='btn typeBtn'>Type: {card.type}</button>
-            <button className='btn rarityBtn'>Rarity: {card.rarity}</button>
+            <button className='btn typeBtn'>
+              Type: {data.selectedCard.type}
+            </button>
+            <button className='btn rarityBtn'>
+              Rarity: {data.selectedCard.rarity}
+            </button>
           </div>
         </section>
       </main>

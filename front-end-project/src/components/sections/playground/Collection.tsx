@@ -17,10 +17,12 @@ export default function Collection() {
   const data: InitialDataState = useSelector(
     (state: RootState) => state.dataState
   );
-  const { isHovering, indexArray } = useSelector((state: RootState) => state.hoverState);
+  const { isHovering, indexArray } = useSelector(
+    (state: RootState) => state.hoverState
+  );
   const dispatch = useDispatch();
 
-  const showButton = (e: evtClickType, index: number) => {
+  const showButton = (e: evtClickType, index: string) => {
     e.preventDefault();
     dispatch(IsMouseInsideCard());
     dispatch(MouseInsideCard(index));
@@ -29,7 +31,7 @@ export default function Collection() {
   const hideButton = (e: evtClickType) => {
     e.preventDefault();
     dispatch(IsMouseInsideCard());
-    dispatch(MouseInsideCard(-1));
+    dispatch(MouseInsideCard("-1"));
   };
   return (
     <section>
@@ -45,18 +47,29 @@ export default function Collection() {
           />
         </button>
         <ul className='collection__list'>
-          {data.cardsToDisplay.map((card, index) => (
+          {data.cardsToDisplay.map((card) => (
             <li
               className='collection__list--item'
               key={card.id}
-              onMouseEnter={(e) => showButton(e, index)}
+              onMouseEnter={(e) => showButton(e, card.id)}
               onMouseLeave={(e) => hideButton(e)}>
               <img
-                style={isHovering && indexArray===index ? { opacity: "0.2" } : { opacity: "1" }}
+                style={
+                  isHovering && indexArray === card.id
+                    ? { opacity: "0.2" }
+                    : { opacity: "1" }
+                }
                 src={`https://art.hearthstonejson.com/v1/render/latest/enUS/256x/${card.id}.png`}
                 alt='Hearthstone card'
               />
-              <CardButtons index={index} card={card} />
+              < CardButtons
+                classProperties={
+                  isHovering && indexArray === card.id
+                    ? "card_buttons"
+                    : "invisible"
+                }
+                cardId={card.id}
+              />
             </li>
           ))}
         </ul>

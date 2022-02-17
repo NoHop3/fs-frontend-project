@@ -7,7 +7,7 @@ import { InitialHoverState } from "../../typescript/redux/reducers/reducer_types
 
 const initialState: InitialHoverState = {
   isHovering: false,
-  indexArray: -1,
+  indexArray: "-1",
 };
 
 const hoverReducer = (state = initialState, action: actionType) => {

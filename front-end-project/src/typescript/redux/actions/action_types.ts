@@ -8,7 +8,6 @@ import {
   FILTER_BY_MANA,
   FILTER_BY_SEARCH,
   SET_DEFAULT_CARDS,
-  SET_SELECTED_CARD,
   FILTER_BY_SEARCH_KEYWORD,
   ADD_CARD_TO_DECK,
   ADD_CARD_TO_FAVS,
@@ -17,6 +16,9 @@ import {
   MOUSE_INSIDE_CARD_INDEX,
   IS_MOUSE_INSIDE_CARD,
   GET_FAVS,
+  GET_CARD_BY_ID,
+  IS_CARD_IN_FAVS,
+  IS_CARD_IN_DECK,
 } from "./action_const";
 
 export type toggleThemeAction = {
@@ -59,11 +61,6 @@ export type SetDefaultCardsAction = {
   payload: number;
 };
 
-export type SetSelectedCardAction = {
-  type: typeof SET_SELECTED_CARD;
-  payload: card;
-};
-
 export type AddCardToDeckAction = {
   type: typeof ADD_CARD_TO_DECK;
   payload: card;
@@ -75,7 +72,15 @@ export type RemoveCardFromDeckAction = {
 
 export type AddCardToFavsAction = {
   type: typeof ADD_CARD_TO_FAVS;
-  payload: card;
+  payload: string;
+};
+export type IsCardInFavsAction = {
+  type: typeof IS_CARD_IN_FAVS;
+  payload: string;
+};
+export type IsCardInDeckAction = {
+  type: typeof IS_CARD_IN_DECK;
+  payload: string;
 };
 export type RemoveCardFromFavsAction = {
   type: typeof REMOVE_CARD_FROM_FAVS;
@@ -83,7 +88,7 @@ export type RemoveCardFromFavsAction = {
 };
 export type MouseInsideCardIndexAction = {
   type: typeof MOUSE_INSIDE_CARD_INDEX;
-  payload: number;
+  payload: string;
 };
 export type IsMouseInsideCardAction = {
   type: typeof IS_MOUSE_INSIDE_CARD;
@@ -91,6 +96,11 @@ export type IsMouseInsideCardAction = {
 
 export type GetFavsAction = {
   type: typeof GET_FAVS;
+};
+
+export type GetCardByIdAction = {
+  type: typeof GET_CARD_BY_ID;
+  payload: string;
 };
 
 export type actionType =
@@ -101,7 +111,6 @@ export type actionType =
   | GoToPrevPageAction
   | FilterByManaAction
   | FilterBySearchAction
-  | SetSelectedCardAction
   | SetDefaultCardsAction
   | FilterBySearchKeywordAction
   | AddCardToDeckAction
@@ -110,4 +119,7 @@ export type actionType =
   | RemoveCardFromFavsAction
   | MouseInsideCardIndexAction
   | IsMouseInsideCardAction
-  | GetFavsAction;
+  | GetFavsAction
+  | GetCardByIdAction
+  | IsCardInFavsAction
+  | IsCardInDeckAction;

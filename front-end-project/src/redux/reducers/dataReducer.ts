@@ -3,7 +3,7 @@ import {
   FETCH_ALL_DATA,
   FILTER_BY_MANA,
   FILTER_BY_SEARCH,
-  FILTER_BY_SEARCH_KEYWORD,
+  GET_CARD_BY_ID,
   GET_FAVS,
   GO_TO_NEXT_PAGE,
   GO_TO_PREV_PAGE,
@@ -18,12 +18,22 @@ const initialState: InitialDataState = {
   cards: [],
   filteredCards: [],
   favouritedCards: [],
+  inFavs: false,
   pageNumber: 1,
   cardsPerPage: 10,
   cardsViewed: 0,
   cardsToDisplay: [],
   filterByMana: [],
+  manaCrystal: -1,
   dataFetched: false,
+  selectedCard: {
+    id: "",
+    name: "",
+    rarity: "",
+    text: "",
+    type: "",
+    cost: -1,
+  },
 };
 
 const dataReducer = (state = initialState, action: actionType) => {
@@ -56,6 +66,7 @@ const dataReducer = (state = initialState, action: actionType) => {
             (state.pageNumber + 2) * state.cardsPerPage
           ),
         ],
+        dataFetched: true,
       };
     case GO_TO_PREV_PAGE:
       return {
@@ -68,25 +79,40 @@ const dataReducer = (state = initialState, action: actionType) => {
             (state.pageNumber - 1) * state.cardsPerPage
           ),
         ],
+        dataFetched: true,
+      };
+    case GET_CARD_BY_ID:
+      return {
+        ...state,
+        selectedCard: state.filteredCards.find(
+          (card) => card.id === action.payload
+        ),
       };
     case FILTER_BY_MANA:
       return {
         ...state,
+        isInFavs: false,
         pageNumber: 1,
         cardsViewed: 0,
-        filteredCards: [
-          ...state.cards.filter((card) => card.cost === action.payload),
-        ],
-        cardsToDisplay: [
-          ...state.cards
-            .filter((card) => card.cost === action.payload)
-            .slice(0, state.cardsPerPage),
-        ],
+        manaCrystal: state.manaCrystal === action.payload ? -1 : action.payload,
+        cardsToDisplay:
+          state.manaCrystal !== action.payload
+            ? [
+                ...state.cards
+                  .filter((card) => card.cost === action.payload)
+                  .slice(0, state.cardsPerPage),
+              ]
+            : [...state.cards.slice(0, state.cardsPerPage)],
+        filteredCards:
+          state.manaCrystal !== action.payload
+            ? [...state.cards.filter((card) => card.cost === action.payload)]
+            : [...state.cards],
       };
     case FILTER_BY_SEARCH:
       return {
         ...state,
         pageNumber: 1,
+        isInFavs: false,
         cardsViewed: 0,
         filteredCards: [
           ...state.cards.filter(
@@ -108,36 +134,6 @@ const dataReducer = (state = initialState, action: actionType) => {
             .slice(0, state.cardsPerPage),
         ],
       };
-    case FILTER_BY_SEARCH_KEYWORD:
-      return {
-        ...state,
-        pageNumber: 1,
-        cardsViewed: 0,
-        filteredCards: [
-          ...state.cards.filter((card) =>
-            action.payload === "rarity"
-              ? card.rarity
-                  .toLocaleLowerCase()
-                  .search(action.payload.toLocaleLowerCase()) !== -1
-              : card.type
-                  .toLocaleLowerCase()
-                  .search(action.payload.toLocaleLowerCase()) !== -1
-          ),
-        ],
-        cardsToDisplay: [
-          ...state.cards
-            .filter((card) =>
-              action.payload === "rarity"
-                ? card.rarity
-                    .toLocaleLowerCase()
-                    .search(action.payload.toLocaleLowerCase()) !== -1
-                : card.type
-                    .toLocaleLowerCase()
-                    .search(action.payload.toLocaleLowerCase()) !== -1
-            )
-            .slice(0, state.cardsPerPage),
-        ],
-      };
     case SET_DEFAULT_CARDS:
       return {
         ...state,
@@ -146,7 +142,10 @@ const dataReducer = (state = initialState, action: actionType) => {
     case ADD_CARD_TO_FAVS:
       return {
         ...state,
-        favouritedCards: [...state.favouritedCards, action.payload],
+        favouritedCards: [
+          ...state.favouritedCards,
+          state.filteredCards.find((card) => card.id === action.payload),
+        ],
       };
     case REMOVE_CARD_FROM_FAVS:
       return {
@@ -156,18 +155,39 @@ const dataReducer = (state = initialState, action: actionType) => {
             (card: card) => card.id !== action.payload
           ),
         ],
+        cardsToDisplay: state.inFavs
+          ? [
+              ...state.favouritedCards
+                .filter((card: card) => card.id !== action.payload)
+                .slice(
+                  state.cardsViewed,
+                  state.pageNumber * state.cardsPerPage
+                ),
+            ]
+          : [...state.cardsToDisplay],
       };
     case GET_FAVS:
       return {
         ...state,
-        filteredCards: [...state.favouritedCards],
-        cardsToDisplay: [
-          ...state.favouritedCards.slice(
-            state.cardsViewed,
-            state.pageNumber * state.cardsPerPage
-          ),
-        ],
+        inFavs: !state.inFavs,
+        filteredCards: !state.inFavs
+          ? [...state.favouritedCards]
+          : [...state.cards],
+        cardsToDisplay: !state.inFavs
+          ? [
+              ...state.favouritedCards.slice(
+                state.cardsViewed,
+                state.pageNumber * state.cardsPerPage
+              ),
+            ]
+          : [
+              ...state.cards.slice(
+                state.cardsViewed,
+                state.pageNumber * state.cardsPerPage
+              ),
+            ],
       };
+
     default:
       return state;
   }

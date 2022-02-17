@@ -10,7 +10,7 @@ import "../../../styles/FilterSearch.css";
 import useImports from "../../../hooks/useImports";
 
 export default function MainPlayground() {
-  const { dispatch, isLaptop, isMobile, isTablet, dataFetched } = useImports();
+  const { dispatch, isLaptop, isMobile, isTablet, data } = useImports();
   useEffect(() => {
     dispatch(fetchFunc());
     isMobile
@@ -21,5 +21,5 @@ export default function MainPlayground() {
       ? dispatch(setDefaultCards(10))
       : dispatch(setDefaultCards(12));
   }, [dispatch, isMobile, isTablet, isLaptop]);
-  return <main>{dataFetched ? <Collection /> : <Loading />}</main>;
+  return <main>{data.dataFetched ? <Collection /> : <Loading />}</main>;
 }

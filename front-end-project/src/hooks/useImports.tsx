@@ -5,24 +5,31 @@ import { Routes, Route, BrowserRouter, Link } from "react-router-dom";
 import {
   AddCardToDeck,
   AddCardToFavs,
+  IsCardInDeck,
+  IsCardInFavs,
   RemoveCardFromDeck,
   RemoveCardFromFavs,
 } from "../redux/actions/actions";
-
+import {
+  InitialDataState,
+  InitialDeckState,
+} from "../typescript/redux/reducers/reducer_types";
 import { RootState } from "../typescript/redux/store";
+
 import { evtClickType } from "../typescript/types";
 
 export default function useTemplate() {
   const { navClass } = useSelector((state: RootState) => state.navState);
   const { lamp } = useSelector((state: RootState) => state.themeState);
-  const { dataFetched, favouritedCards } = useSelector(
+  const data: InitialDataState = useSelector(
     (state: RootState) => state.dataState
   );
   const { isHovering, indexArray } = useSelector(
     (state: RootState) => state.hoverState
   );
-  const card = useSelector((state: RootState) => state.cardState);
-  const { deck } = useSelector((state: RootState) => state.deckState);
+  const deckData: InitialDeckState = useSelector(
+    (state: RootState) => state.deckState
+  );
 
   const dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: `(max-width: 400px)` });
@@ -34,16 +41,20 @@ export default function useTemplate() {
     const element = evt.target as HTMLElement;
     switch (element.className) {
       case "btn addToDeckBtn":
-        dispatch(AddCardToDeck(card));
+        dispatch(AddCardToDeck(data.selectedCard));
+        dispatch(IsCardInDeck(data.selectedCard.id));
         break;
       case "btn addToFavsBtn":
-        dispatch(AddCardToFavs(card));
+        dispatch(AddCardToFavs(data.selectedCard.id));
+        dispatch(IsCardInFavs(data.selectedCard.id));
         break;
       case "btn removeFromDeckBtn":
-        dispatch(RemoveCardFromDeck(card.id));
+        dispatch(RemoveCardFromDeck(data.selectedCard.id));
+        dispatch(IsCardInDeck(data.selectedCard.id));
         break;
       case "btn removeFromFavsBtn":
-        dispatch(RemoveCardFromFavs(card.id));
+        dispatch(RemoveCardFromFavs(data.selectedCard.id));
+        dispatch(IsCardInFavs(data.selectedCard.id));
         break;
       default:
         break;
@@ -62,12 +73,10 @@ export default function useTemplate() {
     isLaptop,
     isMobile,
     isTablet,
-    dataFetched,
-    deck,
-    favouritedCards,
+    deckData,
     handleClick,
-    card,
     isHovering,
     indexArray,
+    data,
   };
 }

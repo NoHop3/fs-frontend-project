@@ -1,32 +1,74 @@
-import React from "react";
+import "../../../styles/Form.css";
+import * as emailjs from "emailjs-com";
+import { useState } from "react";
+import { evtChangeType } from "../../../typescript/types";
 
 export default function Contact() {
-  const handleForm = () => {
-    //TODO
+  const [toSend, setToSend] = useState({
+    from_name: "",
+    from_email: "",
+    message: "",
+  });
+  const onSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
+    emailjs
+      .send(
+        "default_service",
+        "template_8k967km",
+        toSend,
+        "user_TxcZ8p3cECUFbyuSNc57n"
+      )
+      .then((response) => {
+        console.log("SUCCESS!", response.status, response.text);
+      })
+      .catch((err) => {
+        console.log("FAILED...", err);
+      });
+  };
+  const handleChange = (e: evtChangeType) => {
+    setToSend({ ...toSend, [e.target.name]: e.target.value });
+  };
+  const handleMessChange: React.ChangeEventHandler<HTMLTextAreaElement> = (
+    e
+  ) => {
+    setToSend({ ...toSend, [e.target.name]: e.target.value });
   };
   return (
     <div className='contact-box' id='contact'>
       <h2>Contact me!</h2>
-      <form>
+      <form onSubmit={onSubmit}>
         <div className='form-box'>
-          <input type='text' name='fullName' id='fullName' required={true} />
+          <input
+            onChange={handleChange}
+            type='text'
+            name='from_name'
+            id='from_name'
+            required={true}
+          />
           <label htmlFor='name'>Full Name</label>
         </div>
         <div className='form-box'>
-          <input type='email' name='email' id='emailId' required />
+          <input
+            onChange={handleChange}
+            type='email'
+            name='from_email'
+            id='from_email'
+            required
+          />
           <label htmlFor='email'>Email</label>
         </div>
         <div className='form-box'>
           <textarea
+            onChange={handleMessChange}
             name='message'
-            id='contactMessage'
+            id='message'
             required
             cols={35}
             rows={5}></textarea>
           <label htmlFor='message'>Your message here</label>
         </div>
-        <div className='submitBtn'>
-          <button onClick={handleForm}>
+        <div className='submitFormBtn'>
+          <button>
             <span></span>
             <span></span>
             <span></span>
@@ -38,41 +80,3 @@ export default function Contact() {
     </div>
   );
 }
-
-// export default function Contact() {
-//   return (
-//     <div id='contact' classNameName='contact_me'>
-//       <h3 classNameName='contact_me__title'>Write me an email or let's connect in my socials!</h3>
-//       <div classNameName='contact_me__form'>
-//         <form action='#'>
-//           <label htmlFor='fname'>Name:</label>
-//           <input
-//             type='text'
-//             name='fname'
-//             id='fname'
-//             placeholder='Your full name'
-//           />
-//           <br />
-//           <label htmlFor='email'>Email:</label>
-//           <input
-//             type='email'
-//             name='email'
-//             id='email'
-//             placeholder='Your email'
-//           />
-//           <br />
-//           <label htmlFor='message'>Message:</label>
-//           <textarea
-//             name='message'
-//             id='message'
-//             cols={50}
-//             rows={6}
-//             placeholder='Your message here'></textarea>
-//           <br />
-//           <br />
-//           <input type='submit' value='Send!' classNameName="btn" id='btnSend' />
-//         </form>
-//       </div>
-//     </div>
-//   );
-// }

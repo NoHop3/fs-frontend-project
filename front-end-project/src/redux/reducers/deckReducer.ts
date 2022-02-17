@@ -16,6 +16,10 @@ const deckReducer = (state = initialState, action: actionType) => {
       return {
         ...state,
         deck: [...state.deck, action.payload],
+        isCardInDeck:
+          state.deck.find((card) => card === action.payload) !== undefined
+            ? true
+            : false,
       };
     case REMOVE_CARD_FROM_DECK:
       return {
@@ -23,6 +27,10 @@ const deckReducer = (state = initialState, action: actionType) => {
         deck: [
           ...state.deck.filter((card: card) => card.id !== action.payload),
         ],
+        isCardInDeck:
+          state.deck.find((card) => card.id === action.payload) !== undefined
+            ? true
+            : false,
       };
     default:
       return state;

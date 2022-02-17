@@ -2,52 +2,48 @@ import useTemplate from "../../../hooks/useImports";
 import {
   AddCardToDeck,
   AddCardToFavs,
+  GetCardById,
   RemoveCardFromDeck,
   RemoveCardFromFavs,
-  setSelectedCard,
 } from "../../../redux/actions/actions";
-import { card, evtClickType } from "../../../typescript/types";
+import { evtClickType } from "../../../typescript/types";
 import "../../../styles/CardHover.css";
 
 export default function CardButtons({
-  index,
-  card,
+  classProperties,
+  cardId,
 }: {
-  index: number;
-  card: card;
+  classProperties: string;
+  cardId: string;
 }) {
-  const { favouritedCards, deck, Link, isHovering, indexArray, dispatch } =
-    useTemplate();
-  const handleClickDetails = (card: card) => {
-    dispatch(setSelectedCard(card));
+  const { Link, dispatch, data, deckData } = useTemplate();
+  const handleClickDetails = () => {
+    dispatch(GetCardById(cardId));
   };
   const handleClick = (evt: evtClickType) => {
-    //!!! Helpful
     const element = evt.target as HTMLElement;
-    console.log(element.className);
     switch (element.className) {
       case "btnCard addToDeck":
-        dispatch(AddCardToDeck(card));
+        dispatch(
+          AddCardToDeck(data.filteredCards.find((card) => card.id === cardId)!)
+        );
         break;
       case "btnCard addToFavs":
-        dispatch(AddCardToFavs(card));
+        dispatch(AddCardToFavs(cardId));
         break;
       case "btnCard removeFromDeck":
-        dispatch(RemoveCardFromDeck(card.id));
+        dispatch(RemoveCardFromDeck(cardId));
         break;
       case "btnCard removeFromFavs":
-        dispatch(RemoveCardFromFavs(card.id));
+        dispatch(RemoveCardFromFavs(cardId));
         break;
       default:
         break;
     }
   };
   return (
-    <div
-      className={
-        isHovering && indexArray === index ? "card_buttons" : "invisible"
-      }>
-      {deck.find((cardToFind: card) => cardToFind === card) === undefined ? (
+    <div className={classProperties}>
+      {deckData.deck.find((card) => card.id === cardId) === undefined ? (
         <button className='btnCard addToDeck' onClick={handleClick}>
           Add to deck
         </button>
@@ -56,8 +52,7 @@ export default function CardButtons({
           Remove from deck
         </button>
       )}
-      {favouritedCards.find((cardToFind: card) => cardToFind === card) ===
-      undefined ? (
+      {data.favouritedCards.find((card) => card.id === cardId) === undefined ? (
         <button className='btnCard addToFavs' onClick={handleClick}>
           Add to favs
         </button>
@@ -66,8 +61,8 @@ export default function CardButtons({
           Remove from favs
         </button>
       )}
-      <Link to={`/details?${card.id}`}>
-        <button className='btnCard' onClick={() => handleClickDetails(card)}>
+      <Link to={`/details?${cardId}`}>
+        <button className='btnCard' onClick={handleClickDetails}>
           Details
         </button>
       </Link>

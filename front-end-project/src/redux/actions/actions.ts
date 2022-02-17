@@ -12,12 +12,14 @@ import {
   REMOVE_CARD_FROM_DECK,
   REMOVE_CARD_FROM_FAVS,
   SET_DEFAULT_CARDS,
-  SET_SELECTED_CARD,
   TOGGLE_NAV,
   TOGGLE_THEME,
   MOUSE_INSIDE_CARD_INDEX,
   IS_MOUSE_INSIDE_CARD,
   GET_FAVS,
+  GET_CARD_BY_ID,
+  IS_CARD_IN_FAVS,
+  IS_CARD_IN_DECK,
 } from "../../typescript/redux/actions/action_const";
 import {
   AddCardToDeckAction,
@@ -31,12 +33,14 @@ import {
   RemoveCardFromDeckAction,
   RemoveCardFromFavsAction,
   SetDefaultCardsAction,
-  SetSelectedCardAction,
   toggleNavAction,
   toggleThemeAction,
   MouseInsideCardIndexAction,
   IsMouseInsideCardAction,
   GetFavsAction,
+  GetCardByIdAction,
+  IsCardInFavsAction,
+  IsCardInDeckAction,
 } from "../../typescript/redux/actions/action_types";
 import { card } from "../../typescript/types";
 
@@ -64,12 +68,6 @@ export function setDefaultCards(numberOfCards: number): SetDefaultCardsAction {
   return {
     type: SET_DEFAULT_CARDS,
     payload: numberOfCards,
-  };
-}
-export function setSelectedCard(selectedCard: card): SetSelectedCardAction {
-  return {
-    type: SET_SELECTED_CARD,
-    payload: selectedCard,
   };
 }
 
@@ -105,16 +103,16 @@ export function FilterBySearchKeyword(
     payload: keyword,
   };
 }
-export function AddCardToDeck(card: card): AddCardToDeckAction {
+export function AddCardToDeck(cardElement: card): AddCardToDeckAction {
   return {
     type: ADD_CARD_TO_DECK,
-    payload: card,
+    payload: cardElement,
   };
 }
-export function AddCardToFavs(card: card): AddCardToFavsAction {
+export function AddCardToFavs(cardId: string): AddCardToFavsAction {
   return {
     type: ADD_CARD_TO_FAVS,
-    payload: card,
+    payload: cardId,
   };
 }
 export function RemoveCardFromDeck(id: string): RemoveCardFromDeckAction {
@@ -129,7 +127,7 @@ export function RemoveCardFromFavs(id: string): RemoveCardFromFavsAction {
     payload: id,
   };
 }
-export function MouseInsideCard(i: number): MouseInsideCardIndexAction {
+export function MouseInsideCard(i: string): MouseInsideCardIndexAction {
   return {
     type: MOUSE_INSIDE_CARD_INDEX,
     payload: i,
@@ -145,6 +143,24 @@ export function GetFavsArray(): GetFavsAction {
     type: GET_FAVS,
   };
 }
+export function GetCardById(id: string): GetCardByIdAction {
+  return {
+    type: GET_CARD_BY_ID,
+    payload: id,
+  };
+}
+export function IsCardInFavs(id: string): IsCardInFavsAction {
+  return {
+    type: IS_CARD_IN_FAVS,
+    payload: id,
+  };
+}
+export function IsCardInDeck(id: string): IsCardInDeckAction {
+  return {
+    type: IS_CARD_IN_DECK,
+    payload: id,
+  };
+}
 
 export function fetchFunc() {
   return (dispatch: Dispatch) => {
@@ -153,7 +169,6 @@ export function fetchFunc() {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         dispatch(fetchAllData(data));
       })
       .catch((err: string) => {
