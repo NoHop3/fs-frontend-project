@@ -26,67 +26,60 @@ export default function Navigation() {
         />
       </button>
       <nav className='nav'>
-        <ul onClick={() => dispatch(toggleNav())} className='nav__list'>
-          <li className='nav__item'>
-            <Link
-              to={"/"}
-              className='nav__link'
-              onClick={() => dispatch(SetPage("/"))}>
-              Home
-            </Link>
-          </li>
-          {page === "/" ? (
+        {page === "/" ? (
+          <ul onClick={() => dispatch(toggleNav())} className='nav__list'>
+            <li className='nav__item'>
+              <Link
+                to={"/"}
+                className='nav__link'
+                onClick={() => dispatch(SetPage("/"))}>
+                Home
+              </Link>
+            </li>
             <li className='nav__item'>
               <a href='#about' className='nav__link'>
                 About me
               </a>
             </li>
-          ) : (
-            <Link
-              to={"/"}
-              className='nav__link'
-              onClick={() => dispatch(SetPage("/"))}>
-              About me
-            </Link>
-          )}
-
-          {page === "/" ? (
             <li className='nav__item'>
               <a href='#skills' className='nav__link'>
                 Skills
               </a>
             </li>
-          ) : (
-            <Link
-              to={"/"}
-              className='nav__link'
-              onClick={() => dispatch(SetPage("/"))}>
-              About me
-            </Link>
-          )}
-          {page === "/" ? (
             <li className='nav__item'>
               <a href='#contact' className='nav__link'>
                 Contact
               </a>
             </li>
-          ) : (
-            <Link
-              to={"/"}
-              className='nav__link'
-              onClick={() => dispatch(SetPage("/"))}>
-              About me
-            </Link>
-          )}
-          <li>
-            <Link
-              to={"/playground"}
-              className='nav__link'
-              onClick={() => dispatch(SetPage("/playground"))}>
-              Playground
-            </Link>
-          </li>
-        </ul>
+            <li>
+              <Link
+                to={"/playground"}
+                className='nav__link'
+                onClick={() => dispatch(SetPage("/playground"))}>
+                Playground
+              </Link>
+            </li>
+          </ul>
+        ) : (
+          <ul onClick={() => dispatch(toggleNav())} className='nav__list'>
+            <li className='nav__item'>
+              <Link
+                to={"/"}
+                className='nav__link'
+                onClick={() => dispatch(SetPage("/"))}>
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                to={"/playground"}
+                className='nav__link'
+                onClick={() => dispatch(SetPage("/playground"))}>
+                Playground
+              </Link>
+            </li>
+          </ul>
+        )}
       </nav>
     </>
   );

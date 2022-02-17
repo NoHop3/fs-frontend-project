@@ -1,6 +1,9 @@
 import { InitialNavState } from "../../typescript/redux/reducers/reducer_types";
 import { actionType } from "../../typescript/redux/actions/action_types";
-import { TOGGLE_NAV } from "../../typescript/redux/actions/action_const";
+import {
+  SET_PAGE,
+  TOGGLE_NAV,
+} from "../../typescript/redux/actions/action_const";
 
 const initialState: InitialNavState = {
   navClass: "wapper",
@@ -13,6 +16,11 @@ const navReducer = (state = initialState, action: actionType) => {
       return {
         ...state,
         navClass: state.navClass === "wapper" ? "nav-open" : "wapper",
+      };
+    case SET_PAGE:
+      return {
+        ...state,
+        page: action.payload,
       };
     default:
       return state;
