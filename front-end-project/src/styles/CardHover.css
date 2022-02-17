@@ -1,0 +1,71 @@
+.card_buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 90%;
+  bottom: 0;
+  right: 10%;
+  left: 0;
+}
+.btnCard {
+  display: inline-block;
+  padding: 0.5em 2.5em;
+  background: var(--clr-accent);
+  color: var(--clr-dark);
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: var(--fw-bold);
+  transition: transform 200ms ease-in-out;
+}
+
+.btnCard:hover {
+  transform: scale(1.1);
+}
+
+.addToFavs,
+.removeFromFavs {
+  background: #f2757a;
+}
+.removeFromFavs,
+.removeFromDeck {
+  letter-spacing: 0;
+}
+
+.addToDeck,
+.addToFavs,
+.removeFromFavs,
+.removeFromDeck {
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 800px) {
+  .card_buttons {
+    top: 60%;
+    right: 0;
+  }
+  .btnCard {
+    padding: 0.25rem 0.75rem;
+  }
+}
+@media (min-width: 1200px) {
+  .card_buttons {
+    top: 50%;
+  }
+
+  .removeFromFavs,
+  .removeFromDeck {
+    padding: 0.1rem 0.2rem;
+  }
+
+  .addToDeck,
+  .addToFavs,
+  .removeFromFavs,
+  .removeFromDeck {
+    margin-bottom: 1rem;
+  }
+}

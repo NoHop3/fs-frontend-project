@@ -6,6 +6,7 @@ import { fetchFunc, setDefaultCards } from "../../../redux/actions/actions";
 import Collection from "./Collection";
 import "../../../styles/Playground.css";
 import "../../../styles/FilterCost.css";
+import "../../../styles/FilterSearch.css";
 import useImports from "../../../hooks/useImports";
 
 export default function MainPlayground() {

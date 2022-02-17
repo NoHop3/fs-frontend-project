@@ -30,7 +30,8 @@ grid-item {
 }
 
 .prvBtn:hover,
-.nextBtn:hover {
+.nextBtn:hover,
+.cardBtn:hover {
   transform: scale(1.1);
 }
 
@@ -43,6 +44,7 @@ grid-item {
   list-style-type: none;
 }
 .collection__list--item {
+  position: relative;
   max-width: 20rem;
   max-height: 12rem;
 }

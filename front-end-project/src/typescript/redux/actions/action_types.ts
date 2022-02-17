@@ -9,6 +9,14 @@ import {
   FILTER_BY_SEARCH,
   SET_DEFAULT_CARDS,
   SET_SELECTED_CARD,
+  FILTER_BY_SEARCH_KEYWORD,
+  ADD_CARD_TO_DECK,
+  ADD_CARD_TO_FAVS,
+  REMOVE_CARD_FROM_DECK,
+  REMOVE_CARD_FROM_FAVS,
+  MOUSE_INSIDE_CARD_INDEX,
+  IS_MOUSE_INSIDE_CARD,
+  GET_FAVS,
 } from "./action_const";
 
 export type toggleThemeAction = {
@@ -41,6 +49,10 @@ export type FilterBySearchAction = {
   type: typeof FILTER_BY_SEARCH;
   payload: string;
 };
+export type FilterBySearchKeywordAction = {
+  type: typeof FILTER_BY_SEARCH_KEYWORD;
+  payload: string;
+};
 
 export type SetDefaultCardsAction = {
   type: typeof SET_DEFAULT_CARDS;
@@ -52,6 +64,35 @@ export type SetSelectedCardAction = {
   payload: card;
 };
 
+export type AddCardToDeckAction = {
+  type: typeof ADD_CARD_TO_DECK;
+  payload: card;
+};
+export type RemoveCardFromDeckAction = {
+  type: typeof REMOVE_CARD_FROM_DECK;
+  payload: string;
+};
+
+export type AddCardToFavsAction = {
+  type: typeof ADD_CARD_TO_FAVS;
+  payload: card;
+};
+export type RemoveCardFromFavsAction = {
+  type: typeof REMOVE_CARD_FROM_FAVS;
+  payload: string;
+};
+export type MouseInsideCardIndexAction = {
+  type: typeof MOUSE_INSIDE_CARD_INDEX;
+  payload: number;
+};
+export type IsMouseInsideCardAction = {
+  type: typeof IS_MOUSE_INSIDE_CARD;
+};
+
+export type GetFavsAction = {
+  type: typeof GET_FAVS;
+};
+
 export type actionType =
   | toggleNavAction
   | toggleThemeAction
@@ -61,4 +102,12 @@ export type actionType =
   | FilterByManaAction
   | FilterBySearchAction
   | SetSelectedCardAction
-  | SetDefaultCardsAction;
+  | SetDefaultCardsAction
+  | FilterBySearchKeywordAction
+  | AddCardToDeckAction
+  | AddCardToFavsAction
+  | RemoveCardFromDeckAction
+  | RemoveCardFromFavsAction
+  | MouseInsideCardIndexAction
+  | IsMouseInsideCardAction
+  | GetFavsAction;
