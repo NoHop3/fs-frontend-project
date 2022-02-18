@@ -16,7 +16,7 @@ function ErrorPage() {
       <div
         style={{ paddingTop: "50px", textAlign: "center" }}
         className='svgAnimations'>
-        Lost? Find help.
+        Lost? Error 404
         <svg
           width='424'
           height='533'
