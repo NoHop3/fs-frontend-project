@@ -17,7 +17,7 @@ import { card } from "../../typescript/types";
 const initialState: InitialDataState = {
   cards: [],
   filteredCards: [],
-  favouritedCards: JSON.parse(localStorage.getItem("favs")!),
+  favouritedCards: [],
   inFavs: false,
   pageNumber: 1,
   cardsPerPage: 10,

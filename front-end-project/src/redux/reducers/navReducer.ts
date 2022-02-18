@@ -7,7 +7,7 @@ import {
 
 const initialState: InitialNavState = {
   navClass: "wapper",
-  page: JSON.parse(localStorage.getItem("page")!),
+  page: "/",
 };
 
 const navReducer = (state = initialState, action: actionType) => {
