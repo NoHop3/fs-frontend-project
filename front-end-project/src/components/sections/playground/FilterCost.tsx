@@ -1,17 +1,6 @@
 import { memo, useCallback } from "react";
 import { useDispatch } from "react-redux";
 
-import crystal0 from "../../../assets/legend0_small.png";
-import crystal1 from "../../../assets/legend1_small.png";
-import crystal2 from "../../../assets/legend2_small.png";
-import crystal3 from "../../../assets/legend3_small.png";
-import crystal4 from "../../../assets/legend4_small.png";
-import crystal5 from "../../../assets/legend5_small.png";
-import crystal6 from "../../../assets/legend6_small.png";
-import crystal7 from "../../../assets/legend7_small.png";
-import crystal8 from "../../../assets/legend8_small.png";
-import crystal9 from "../../../assets/legend9_small.png";
-import crystal10 from "../../../assets/legend10_small.png";
 import { FilterByMana } from "../../../redux/actions/actions";
 import { evtClickType } from "../../../typescript/types";
 
@@ -65,14 +54,14 @@ function FilterCost() {
       <button className='manaBtn' onClick={handleClick}>
         <img
           className='crystal__image mana0'
-          src={crystal0}
+          src='/images/legend0_small.png'
           alt={`Crystal with number 0 on it`}
         />
       </button>
       <button className='manaBtn' onClick={handleClick}>
         <img
           className='crystal__image mana1'
-          src={crystal1}
+          src='/images/legend1_small.png'
           alt={`Crystal with number 1 on it`}
         />
       </button>
@@ -80,7 +69,7 @@ function FilterCost() {
       <button className='manaBtn' onClick={handleClick}>
         <img
           className='crystal__image mana2'
-          src={crystal2}
+          src='/images/legend2_small.png'
           alt={`Crystal with number 2 on it`}
         />
       </button>
@@ -88,7 +77,7 @@ function FilterCost() {
       <button className='manaBtn' onClick={handleClick}>
         <img
           className='crystal__image mana3'
-          src={crystal3}
+          src='/images/legend3_small.png'
           alt={`Crystal with number 3 on it`}
         />
       </button>
@@ -96,7 +85,7 @@ function FilterCost() {
       <button className='manaBtn' onClick={handleClick}>
         <img
           className='crystal__image mana4'
-          src={crystal4}
+          src='/images/legend4_small.png'
           alt={`Crystal with number 4 on it`}
         />
       </button>
@@ -104,7 +93,7 @@ function FilterCost() {
       <button className='manaBtn' onClick={handleClick}>
         <img
           className='crystal__image mana5'
-          src={crystal5}
+          src='/images/legend5_small.png'
           alt={`Crystal with number 5 on it`}
         />
       </button>
@@ -112,7 +101,7 @@ function FilterCost() {
       <button className='manaBtn' onClick={handleClick}>
         <img
           className='crystal__image mana6'
-          src={crystal6}
+          src='/images/legend6_small.png'
           alt={`Crystal with number 6 on it`}
         />
       </button>
@@ -120,7 +109,7 @@ function FilterCost() {
       <button className='manaBtn' onClick={handleClick}>
         <img
           className='crystal__image mana7'
-          src={crystal7}
+          src='/images/legend7_small.png'
           alt={`Crystal with number 7 on it`}
         />
       </button>
@@ -128,7 +117,7 @@ function FilterCost() {
       <button className='manaBtn' onClick={handleClick}>
         <img
           className='crystal__image mana8'
-          src={crystal8}
+          src='/images/legend8_small.png'
           alt={`Crystal with number 8 on it`}
         />
       </button>
@@ -136,7 +125,7 @@ function FilterCost() {
       <button className='manaBtn' onClick={handleClick}>
         <img
           className='crystal__image mana9'
-          src={crystal9}
+          src='/images/legend9_small.png'
           alt={`Crystal with number 9 on it`}
         />
       </button>
@@ -144,7 +133,7 @@ function FilterCost() {
       <button className='manaBtn' onClick={handleClick}>
         <img
           className='crystal__image mana10'
-          src={crystal10}
+          src='/images/legend10_small.png'
           alt={`Crystal with number 10 on it`}
         />
       </button>

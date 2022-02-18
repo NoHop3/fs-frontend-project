@@ -1,5 +1,3 @@
-import portraitImage from "../../../assets/stefan__georgiev2.png";
-
 export default function About() {
   return (
     <section className='about-me' id='about'>
@@ -9,8 +7,8 @@ export default function About() {
       </p>
       <div className='about-me__body'>
         <p>
-          I am 21 years old and I love working out, listening to
-          music, eating healthy and everything else that makes me laugh.
+          I am 21 years old and I love working out, listening to music, eating
+          healthy and everything else that makes me laugh.
         </p>
         <p>
           I was born Bulgaria and I spent most of my childhood years there. I
@@ -25,7 +23,11 @@ export default function About() {
           good.
         </p>
       </div>
-      <img src={portraitImage} alt='Portrait of Stefan Georgiev' className="about-me__img" />
+      <img
+        src={"/images/stefan__georgiev2.png"}
+        alt='Portrait of Stefan Georgiev'
+        className='about-me__img'
+      />
     </section>
   );
 }

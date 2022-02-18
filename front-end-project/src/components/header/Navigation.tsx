@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 
 import { SetPage, toggleNav, toggleTheme } from "../../redux/actions/actions";
 import { RootState } from "../../typescript/redux/store";
-import moon from "../../assets/icons8-fog.gif";
-import sun from "../../assets/icons8-sun.gif";
 
 export default function Navigation() {
   const dispatch = useDispatch();
@@ -21,7 +19,7 @@ export default function Navigation() {
       <button className={"themeIcon"} onClick={() => dispatch(toggleTheme())}>
         <img
           className={"themeImage"}
-          src={lamp ? moon : sun}
+          src={lamp ? "/images/icons8-fog.gif" : "/images/icons8-sun.gif"}
           alt='Theme icon'
         />
       </button>

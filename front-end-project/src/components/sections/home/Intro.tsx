@@ -1,6 +1,3 @@
-import portraitImage from "../../../assets/stefan__georgiev1.png";
-import wave from "../../../assets/Wave.gif";
-
 export default function Intro() {
   return (
     <section className='intro'>
@@ -8,7 +5,7 @@ export default function Intro() {
         Hi
         <span>
           <img
-            src={wave}
+            src={"/images/Wave.gif"}
             alt='Gif of hand waving'
             className='section__title--img'
           />
@@ -20,7 +17,7 @@ export default function Intro() {
         Full-stack developer
       </p>
       <img
-        src={portraitImage}
+        src={"/images/stefan__georgiev1.png"}
         alt='Portrait of Stefan Georgiev'
         className='intro__img'
       />
