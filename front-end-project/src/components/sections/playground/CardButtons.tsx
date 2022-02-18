@@ -61,7 +61,7 @@ export default function CardButtons({
           Remove from favs
         </button>
       )}
-      <Link to={`/details?${cardId}`}>
+      <Link to={`/details/${cardId}`}>
         <button className='btnCard' onClick={handleClickDetails}>
           Details
         </button>

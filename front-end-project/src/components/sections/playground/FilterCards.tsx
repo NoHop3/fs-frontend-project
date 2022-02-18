@@ -5,7 +5,6 @@ import { FilterBySearch, GetFavsArray } from "../../../redux/actions/actions";
 import { evtChangeType } from "../../../typescript/types";
 
 function Filter() {
-  //!!!Not fully optimized
   const { dispatch, deckData, data } = useTemplate();
   const handleClick = useCallback(() => {
     dispatch(GetFavsArray());
@@ -16,7 +15,6 @@ function Filter() {
     },
     [dispatch]
   );
-  console.log("FILTER SEARCG IS RENDERING");
   return (
     <div className='filter_cards'>
       <div className='searchBar'>

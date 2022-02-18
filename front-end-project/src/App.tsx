@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/playground' element={<Playground />} />
-        <Route path='/details:cardId' element={<SingleCard />} />
+        <Route path='/details/:cardId' element={<SingleCard />} />
         <Route path='*' element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>

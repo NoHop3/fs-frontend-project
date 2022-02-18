@@ -17,7 +17,6 @@ import { evtClickType } from "../../../typescript/types";
 
 function FilterCost() {
   const dispatch = useDispatch();
-  console.log("FILTER Cost IS RENDERING");
   const handleClick = useCallback(
     (evt: evtClickType) => {
       const element = evt.target as HTMLElement;

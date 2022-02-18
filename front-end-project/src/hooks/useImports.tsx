@@ -19,7 +19,6 @@ import { RootState } from "../typescript/redux/store";
 import { evtClickType } from "../typescript/types";
 
 export default function useTemplate() {
-  //!!! Needs performance optimization
   const { navClass } = useSelector((state: RootState) => state.navState);
   const { lamp } = useSelector((state: RootState) => state.themeState);
   const data: InitialDataState = useSelector(
