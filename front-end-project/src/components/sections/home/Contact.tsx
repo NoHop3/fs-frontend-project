@@ -26,6 +26,7 @@ function Contact() {
         .catch((err) => {
           console.log("FAILED...", err);
         });
+      setToSend({ from_email: "", from_name: "", message: "" });
     },
     [toSend]
   );
