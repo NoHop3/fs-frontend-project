@@ -1,23 +1,19 @@
-import ErrorPage from "./components/pages/ErrorPage";
-import Home from "./components/pages/Home";
-import Playground from "./components/pages/Playground";
-import SingleCard from "./components/sections/playground/SingleCard";
-import importTemplate from "./hooks/useImports";
-import "./styles/Header.css";
-import "./styles/Footer.css";
+import About from "./components/About";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import Hero from "./components/Hero";
+import Work from "./components/Work";
 
-function App() {
-  const { BrowserRouter, Routes, Route } = importTemplate();
+export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/playground' element={<Playground />} />
-        <Route path='/details/:cardId' element={<SingleCard />} />
-        <Route path='*' element={<ErrorPage />} />
-      </Routes>
-    </BrowserRouter>
+    <>
+      <Header />
+      <main>
+        <Hero />
+        <Work />
+        <About />
+      </main>
+      <Footer />
+    </>
   );
 }
-
-export default App;
