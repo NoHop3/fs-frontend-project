@@ -47,7 +47,7 @@ export const about = {
 
 export const projects: Project[] = [
   {
-    title: "Pa-pa-pas De Trois",
+    title: "Pa-pa-pas de trois",
     year: "2026",
     summary:
       "A ballet studio's website, built for my sister's business. Static Next.js with localised routing in four languages, an interactive gallery, scroll-reveal animations and structured data for SEO.",
@@ -55,6 +55,19 @@ export const projects: Project[] = [
     links: [
       { label: "Live site", href: "https://papapasdetrois.com" },
       { label: "Source", href: "https://github.com/NoHop3/next-js-tailwind-ballet" },
+    ],
+  },
+  {
+    title: "Automated hydroponics",
+    year: "2023–24",
+    summary:
+      "My bachelor project: a cloud platform for monitoring hydroponic grows. IoT devices report light, temperature, humidity, pH and water temperature; the app charts current and historical readings per device, behind JWT auth. Serverless Express on Lambda with DynamoDB, deployed to separate dev and production environments.",
+    stack: ["TypeScript", "React", "AWS Lambda", "DynamoDB", "MUI", "Storybook"],
+    links: [
+      {
+        label: "Source",
+        href: "https://github.com/Automating-Hydroponics-BPR2/via-sem7-bpr2",
+      },
     ],
   },
   {
@@ -74,9 +87,6 @@ export const projects: Project[] = [
     summary:
       "A first-person survival horror game built in Unity for my sixth-semester game development project — enemy AI, inventory and interaction systems, level design and sound.",
     stack: ["Unity", "C#", "Game design"],
-    links: [
-      { label: "Watch demo", href: "https://www.youtube.com/watch?v=XYNmKGC5c9Q" },
-      { label: "Source", href: "https://github.com/NoHop3/via-sem6-gmd-unity" },
-    ],
+    links: [{ label: "Source", href: "https://github.com/NoHop3/via-sem6-gmd-unity" }],
   },
 ];
